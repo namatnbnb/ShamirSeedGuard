@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const shares = document.getElementById('shares').value;
         const threshold = document.getElementById('threshold').value;
         const seedType = document.getElementById('seedType').value;
+        const timeLock = document.getElementById('timeLock').value;
 
-        console.log('Submitting split form with:', { seed: seed.substring(0, 10) + '...', shares, threshold, seedType });
+        console.log('Submitting split form with:', { seed: seed.substring(0, 10) + '...', shares, threshold, seedType, timeLock });
 
         fetch('/split', {
             method: 'POST',
@@ -24,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 'seed': seed,
                 'shares': shares,
                 'threshold': threshold,
-                'seedType': seedType
+                'seedType': seedType,
+                'timeLock': timeLock
             })
         })
         .then(response => response.json())
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h5 class="card-title">Share ID ${index + 1}</h5>
                                 <p class="card-text">${share.id}</p>
                                 <img src="data:image/png;base64,${share.qr_code}" alt="QR Code for Share ID ${index + 1}" class="img-fluid">
+                                ${share.time_lock ? `<p class="card-text">Time-locked until: ${new Date(share.time_lock).toLocaleString()}</p>` : ''}
                             </div>
                         </div>
                     `;

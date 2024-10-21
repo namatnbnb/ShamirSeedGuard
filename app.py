@@ -5,8 +5,9 @@ from flask import Flask, render_template, request, jsonify
 from secretsharing import SecretSharer
 from models import Session, EncryptedShare, encrypt_share, decrypt_share
 import uuid
-import qrcode
+import qrcode, qrcode.image.pil
 from io import BytesIO
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY") or "a secret key"
@@ -22,9 +23,10 @@ def split_seed():
     shares = int(request.form['shares'])
     threshold = int(request.form['threshold'])
     seed_type = request.form['seedType']
+    time_lock = request.form.get('timeLock')
 
     logging.debug(f"Received seed phrase (first 10 chars): {seed[:10]}...")
-    logging.debug(f"Shares: {shares}, Threshold: {threshold}, Seed Type: {seed_type}")
+    logging.debug(f"Shares: {shares}, Threshold: {threshold}, Seed Type: {seed_type}, Time Lock: {time_lock}")
 
     if not is_valid_seed(seed, seed_type):
         logging.warning(f"Invalid seed format for type: {seed_type}")
@@ -51,26 +53,30 @@ def split_seed():
         for index, share in enumerate(split_shares):
             share_id = str(uuid.uuid4())
             encrypted_share = encrypt_share(share)
-            new_share = EncryptedShare(share_id=share_id, encrypted_share=encrypted_share)
+            time_lock_date = None
+            if time_lock:
+                time_lock_date = datetime.now() + timedelta(days=int(time_lock))
+            new_share = EncryptedShare(share_id=share_id, encrypted_share=encrypted_share, time_lock=time_lock_date)
             session.add(new_share)
             qr_code = generate_qr_code(share_id)
             stored_shares.append({
                 'id': share_id,
-                'qr_code': qr_code
+                'qr_code': qr_code,
+                'time_lock': time_lock_date.isoformat() if time_lock_date else None
             })
             logging.debug(f"Processed share {index + 1}: ID={share_id[:8]}...")
 
         session.commit()
         logging.debug(f"Successfully stored {len(stored_shares)} shares in the database")
 
-        # Add this log statement right before returning the response
         logging.debug(f"Returning response: {{'shares': {stored_shares}}}")
         return jsonify({'shares': stored_shares})
     except Exception as e:
         logging.error(f"Error in split_seed: {str(e)}")
         return jsonify({'error': f"An error occurred while splitting the seed: {str(e)}"}), 500
     finally:
-        session.close()
+        if 'session' in locals():
+            session.close()
 
 @app.route('/reconstruct', methods=['POST'])
 def reconstruct_seed():
@@ -87,9 +93,12 @@ def reconstruct_seed():
     try:
         session = Session()
         shares = []
+        current_time = datetime.now()
         for share_id in share_ids:
             encrypted_share = session.query(EncryptedShare).filter_by(share_id=share_id).first()
             if encrypted_share:
+                if encrypted_share.time_lock and encrypted_share.time_lock > current_time:
+                    return jsonify({'error': f'Share {share_id} is time-locked until {encrypted_share.time_lock.isoformat()}'}), 403
                 decrypted_share = decrypt_share(encrypted_share.encrypted_share)
                 shares.append(decrypted_share)
         
@@ -112,7 +121,8 @@ def reconstruct_seed():
         logging.error(f"Error in reconstruct_seed: {str(e)}")
         return jsonify({'error': f"An error occurred while reconstructing the seed: {str(e)}"}), 500
     finally:
-        session.close()
+        if 'session' in locals():
+            session.close()
 
 def is_valid_seed(seed, seed_type):
     word_count = len(seed.split())

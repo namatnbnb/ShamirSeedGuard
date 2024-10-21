@@ -35,6 +35,10 @@
                         <label for="threshold" class="form-label">Threshold</label>
                         <input type="number" class="form-control" id="threshold" min="2" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="timeLock" class="form-label">Time Lock (days, optional)</label>
+                        <input type="number" class="form-control" id="timeLock" min="0">
+                    </div>
                     <button type="submit" class="btn btn-primary">Split Seed</button>
                 </form>
                 <div id="splitResult" class="mt-3"></div>
