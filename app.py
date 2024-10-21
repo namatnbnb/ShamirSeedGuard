@@ -58,7 +58,10 @@ def split_seed():
 
 @app.route('/reconstruct', methods=['POST'])
 def reconstruct_seed():
-    share_ids = request.form.getlist('share_ids[]')
+    data = request.get_json()
+    share_ids = data.get('share_ids', [])
+
+    logging.debug(f"Received share_ids: {share_ids}")
 
     if len(share_ids) < 2:
         return jsonify({'error': 'At least 2 shares are required'}), 400

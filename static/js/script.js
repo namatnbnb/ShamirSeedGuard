@@ -44,17 +44,20 @@ document.addEventListener('DOMContentLoaded', function() {
     reconstructForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const shareIds = Array.from(document.getElementsByClassName('share-input'))
-            .map(input => input.value)
-            .filter(value => value.trim() !== '');
+            .map(input => input.value.trim())
+            .filter(value => value !== '');
+
+        if (shareIds.length < 2) {
+            reconstructResult.innerHTML = `<div class="alert alert-danger">At least 2 shares are required</div>`;
+            return;
+        }
 
         fetch('/reconstruct', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            body: new URLSearchParams({
-                'share_ids[]': shareIds
-            })
+            body: JSON.stringify({ share_ids: shareIds })
         })
         .then(response => response.json())
         .then(data => {
