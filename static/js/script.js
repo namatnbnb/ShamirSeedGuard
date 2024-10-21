@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.error) {
                 splitResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
-            } else {
+            } else if (data.shares && Array.isArray(data.shares)) {
                 let sharesHtml = '<h3>Generated Shares:</h3>';
                 data.shares.forEach((share, index) => {
                     sharesHtml += `
@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                 });
                 splitResult.innerHTML = `<div class="alert alert-success">${sharesHtml}</div>`;
+            } else {
+                splitResult.innerHTML = `<div class="alert alert-warning">No shares were generated</div>`;
             }
         })
         .catch(error => {
@@ -73,8 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.error) {
                 reconstructResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
-            } else {
+            } else if (data.seed) {
                 reconstructResult.innerHTML = `<div class="alert alert-success"><h3>Reconstructed Seed:</h3><p>${data.seed}</p></div>`;
+            } else {
+                reconstructResult.innerHTML = `<div class="alert alert-warning">Unable to reconstruct the seed</div>`;
             }
         })
         .catch(error => {
