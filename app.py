@@ -63,6 +63,8 @@ def split_seed():
         session.commit()
         logging.debug(f"Successfully stored {len(stored_shares)} shares in the database")
 
+        # Add this log statement right before returning the response
+        logging.debug(f"Returning response: {{'shares': {stored_shares}}}")
         return jsonify({'shares': stored_shares})
     except Exception as e:
         logging.error(f"Error in split_seed: {str(e)}")

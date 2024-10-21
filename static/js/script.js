@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Received response:', data);
+            console.log('Received response:', JSON.stringify(data, null, 2));
             if (data.error) {
                 splitResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
             } else if (data.shares && Array.isArray(data.shares)) {
