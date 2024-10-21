@@ -1,12 +1,11 @@
 import os
+import base64
 import logging
 from flask import Flask, render_template, request, jsonify
 from secretsharing import SecretSharer
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY") or "a secret key"
-
-# Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/')
@@ -19,6 +18,9 @@ def split_seed():
     shares = int(request.form['shares'])
     threshold = int(request.form['threshold'])
 
+    logging.debug(f"Received seed phrase (first 10 chars): {seed[:10]}...")
+    logging.debug(f"Shares: {shares}, Threshold: {threshold}")
+
     if not is_valid_seed(seed):
         return jsonify({'error': 'Invalid seed format'}), 400
 
@@ -26,19 +28,14 @@ def split_seed():
         return jsonify({'error': 'Invalid shares or threshold'}), 400
 
     try:
-        # Convert seed phrase to hexadecimal
+        # Convert seed to hex
         hex_seed = seed.encode('utf-8').hex()
-        logging.debug(f"Hex seed: {hex_seed}")
+        logging.debug(f"Hex seed (first 10 chars): {hex_seed[:10]}...")
 
-        # Try with a simple string first
-        test_secret = "test secret"
-        logging.debug(f"Testing with simple string: {test_secret}")
-        test_shares = SecretSharer.split_secret(test_secret, threshold, shares)
-        logging.debug(f"Test shares: {test_shares}")
-
-        # Now try with the actual seed
+        # Use SecretSharer to split the secret
         split_shares = SecretSharer.split_secret(hex_seed, threshold, shares)
-        logging.debug(f"Generated shares: {split_shares}")
+        logging.debug("Successfully split using SecretSharer")
+
         return jsonify({'shares': split_shares})
     except Exception as e:
         logging.error(f"Error in split_seed: {str(e)}")
@@ -52,12 +49,13 @@ def reconstruct_seed():
         return jsonify({'error': 'At least 2 shares are required'}), 400
 
     try:
+        # Use SecretSharer to reconstruct the secret
         reconstructed_hex_seed = SecretSharer.recover_secret(shares)
-        logging.debug(f"Reconstructed hex seed: {reconstructed_hex_seed}")
+        logging.debug("Successfully reconstructed using SecretSharer")
 
-        # Convert hexadecimal back to seed phrase
+        # Convert hex back to seed phrase
         reconstructed_seed = bytes.fromhex(reconstructed_hex_seed).decode('utf-8')
-        logging.debug(f"Reconstructed seed: {reconstructed_seed}")
+        logging.debug("Successfully decoded hex seed")
 
         return jsonify({'seed': reconstructed_seed})
     except Exception as e:
