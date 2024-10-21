@@ -15,8 +15,17 @@
                 <h2>Split Seed</h2>
                 <form id="splitForm">
                     <div class="mb-3">
-                        <label for="seed" class="form-label">Seed Phrase (BIP39 mnemonic)</label>
+                        <label for="seed" class="form-label">Seed Phrase</label>
                         <textarea class="form-control" id="seed" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="seedType" class="form-label">Seed Type</label>
+                        <select class="form-select" id="seedType" required>
+                            <option value="BIP39">BIP39 Mnemonic</option>
+                            <option value="Electrum">Electrum Seed</option>
+                            <option value="Hex">Hexadecimal</option>
+                            <option value="Base58">Base58</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="shares" class="form-label">Total Shares</label>
@@ -43,6 +52,15 @@
                             <label for="share2" class="form-label">Share 2</label>
                             <input type="text" class="form-control share-input" id="share2" required>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reconstructSeedType" class="form-label">Seed Type</label>
+                        <select class="form-select" id="reconstructSeedType" required>
+                            <option value="BIP39">BIP39 Mnemonic</option>
+                            <option value="Electrum">Electrum Seed</option>
+                            <option value="Hex">Hexadecimal</option>
+                            <option value="Base58">Base58</option>
+                        </select>
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="addShareBtn">Add Share</button>
                     <button type="submit" class="btn btn-primary">Reconstruct Seed</button>

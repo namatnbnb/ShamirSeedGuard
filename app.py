@@ -19,11 +19,12 @@ def split_seed():
     seed = request.form['seed']
     shares = int(request.form['shares'])
     threshold = int(request.form['threshold'])
+    seed_type = request.form['seedType']
 
     logging.debug(f"Received seed phrase (first 10 chars): {seed[:10]}...")
-    logging.debug(f"Shares: {shares}, Threshold: {threshold}")
+    logging.debug(f"Shares: {shares}, Threshold: {threshold}, Seed Type: {seed_type}")
 
-    if not is_valid_seed(seed):
+    if not is_valid_seed(seed, seed_type):
         return jsonify({'error': 'Invalid seed format'}), 400
 
     if shares < threshold or threshold < 2:
@@ -60,8 +61,10 @@ def split_seed():
 def reconstruct_seed():
     data = request.get_json()
     share_ids = data.get('share_ids', [])
+    seed_type = data.get('seedType', 'BIP39')
 
     logging.debug(f"Received share_ids: {share_ids}")
+    logging.debug(f"Seed Type: {seed_type}")
 
     if len(share_ids) < 2:
         return jsonify({'error': 'At least 2 shares are required'}), 400
@@ -86,6 +89,9 @@ def reconstruct_seed():
         reconstructed_seed = bytes.fromhex(reconstructed_hex_seed).decode('utf-8')
         logging.debug("Successfully decoded hex seed")
 
+        if not is_valid_seed(reconstructed_seed, seed_type):
+            return jsonify({'error': 'Reconstructed seed is not valid'}), 400
+
         return jsonify({'seed': reconstructed_seed})
     except Exception as e:
         logging.error(f"Error in reconstruct_seed: {str(e)}")
@@ -93,10 +99,19 @@ def reconstruct_seed():
     finally:
         session.close()
 
-def is_valid_seed(seed):
-    # Basic validation: check if the seed consists of 12, 15, 18, 21, or 24 words
+def is_valid_seed(seed, seed_type):
     word_count = len(seed.split())
-    return word_count in [12, 15, 18, 21, 24]
+    
+    if seed_type == 'BIP39':
+        return word_count in [12, 15, 18, 21, 24]
+    elif seed_type == 'Electrum':
+        return word_count in [12, 24]
+    elif seed_type == 'Hex':
+        return all(c in '0123456789abcdefABCDEF' for c in seed) and len(seed) % 2 == 0
+    elif seed_type == 'Base58':
+        return all(c in '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz' for c in seed)
+    else:
+        return False
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

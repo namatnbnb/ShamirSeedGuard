@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const seed = document.getElementById('seed').value;
         const shares = document.getElementById('shares').value;
         const threshold = document.getElementById('threshold').value;
+        const seedType = document.getElementById('seedType').value;
 
         fetch('/split', {
             method: 'POST',
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             body: new URLSearchParams({
                 'seed': seed,
                 'shares': shares,
-                'threshold': threshold
+                'threshold': threshold,
+                'seedType': seedType
             })
         })
         .then(response => response.json())
@@ -46,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const shareIds = Array.from(document.getElementsByClassName('share-input'))
             .map(input => input.value.trim())
             .filter(value => value !== '');
+        const seedType = document.getElementById('reconstructSeedType').value;
 
         if (shareIds.length < 2) {
             reconstructResult.innerHTML = `<div class="alert alert-danger">At least 2 shares are required</div>`;
@@ -57,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ share_ids: shareIds })
+            body: JSON.stringify({ share_ids: shareIds, seedType: seedType })
         })
         .then(response => response.json())
         .then(data => {
