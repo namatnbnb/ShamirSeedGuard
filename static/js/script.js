@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.error) {
                 splitResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
             } else {
-                let sharesHtml = '<h3>Generated Shares:</h3><ul>';
-                data.shares.forEach((share, index) => {
-                    sharesHtml += `<li>Share ${index + 1}: ${share}</li>`;
+                let sharesHtml = '<h3>Generated Share IDs:</h3><ul>';
+                data.share_ids.forEach((shareId, index) => {
+                    sharesHtml += `<li>Share ID ${index + 1}: ${shareId}</li>`;
                 });
                 sharesHtml += '</ul>';
                 splitResult.innerHTML = `<div class="alert alert-success">${sharesHtml}</div>`;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     reconstructForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const shares = Array.from(document.getElementsByClassName('share-input'))
+        const shareIds = Array.from(document.getElementsByClassName('share-input'))
             .map(input => input.value)
             .filter(value => value.trim() !== '');
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
-                'shares[]': shares
+                'share_ids[]': shareIds
             })
         })
         .then(response => response.json())
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const newShareInput = document.createElement('div');
         newShareInput.className = 'mb-3';
         newShareInput.innerHTML = `
-            <label for="share${shareCount}" class="form-label">Share ${shareCount}</label>
+            <label for="share${shareCount}" class="form-label">Share ID ${shareCount}</label>
             <input type="text" class="form-control share-input" id="share${shareCount}">
         `;
         shareInputs.appendChild(newShareInput);

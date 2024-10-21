@@ -3,6 +3,8 @@ import base64
 import logging
 from flask import Flask, render_template, request, jsonify
 from secretsharing import SecretSharer
+from models import Session, EncryptedShare, encrypt_share, decrypt_share
+import uuid
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY") or "a secret key"
@@ -36,19 +38,43 @@ def split_seed():
         split_shares = SecretSharer.split_secret(hex_seed, threshold, shares)
         logging.debug("Successfully split using SecretSharer")
 
-        return jsonify({'shares': split_shares})
+        # Encrypt and store shares in the database
+        session = Session()
+        stored_shares = []
+        for share in split_shares:
+            share_id = str(uuid.uuid4())
+            encrypted_share = encrypt_share(share)
+            new_share = EncryptedShare(share_id=share_id, encrypted_share=encrypted_share)
+            session.add(new_share)
+            stored_shares.append(share_id)
+        session.commit()
+
+        return jsonify({'share_ids': stored_shares})
     except Exception as e:
         logging.error(f"Error in split_seed: {str(e)}")
         return jsonify({'error': f"An error occurred while splitting the seed: {str(e)}"}), 500
+    finally:
+        session.close()
 
 @app.route('/reconstruct', methods=['POST'])
 def reconstruct_seed():
-    shares = request.form.getlist('shares[]')
+    share_ids = request.form.getlist('share_ids[]')
 
-    if len(shares) < 2:
+    if len(share_ids) < 2:
         return jsonify({'error': 'At least 2 shares are required'}), 400
 
     try:
+        session = Session()
+        shares = []
+        for share_id in share_ids:
+            encrypted_share = session.query(EncryptedShare).filter_by(share_id=share_id).first()
+            if encrypted_share:
+                decrypted_share = decrypt_share(encrypted_share.encrypted_share)
+                shares.append(decrypted_share)
+        
+        if len(shares) < 2:
+            return jsonify({'error': 'Not enough valid shares provided'}), 400
+
         # Use SecretSharer to reconstruct the secret
         reconstructed_hex_seed = SecretSharer.recover_secret(shares)
         logging.debug("Successfully reconstructed using SecretSharer")
@@ -61,6 +87,8 @@ def reconstruct_seed():
     except Exception as e:
         logging.error(f"Error in reconstruct_seed: {str(e)}")
         return jsonify({'error': f"An error occurred while reconstructing the seed: {str(e)}"}), 500
+    finally:
+        session.close()
 
 def is_valid_seed(seed):
     # Basic validation: check if the seed consists of 12, 15, 18, 21, or 24 words
