@@ -27,9 +27,16 @@ def split_seed():
 
     try:
         # Convert seed phrase to hexadecimal
-        hex_seed = ' '.join(format(ord(c), '02x') for c in seed)
+        hex_seed = seed.encode('utf-8').hex()
         logging.debug(f"Hex seed: {hex_seed}")
 
+        # Try with a simple string first
+        test_secret = "test secret"
+        logging.debug(f"Testing with simple string: {test_secret}")
+        test_shares = SecretSharer.split_secret(test_secret, threshold, shares)
+        logging.debug(f"Test shares: {test_shares}")
+
+        # Now try with the actual seed
         split_shares = SecretSharer.split_secret(hex_seed, threshold, shares)
         logging.debug(f"Generated shares: {split_shares}")
         return jsonify({'shares': split_shares})
@@ -49,7 +56,7 @@ def reconstruct_seed():
         logging.debug(f"Reconstructed hex seed: {reconstructed_hex_seed}")
 
         # Convert hexadecimal back to seed phrase
-        reconstructed_seed = ''.join(chr(int(reconstructed_hex_seed[i:i+2], 16)) for i in range(0, len(reconstructed_hex_seed), 2))
+        reconstructed_seed = bytes.fromhex(reconstructed_hex_seed).decode('utf-8')
         logging.debug(f"Reconstructed seed: {reconstructed_seed}")
 
         return jsonify({'seed': reconstructed_seed})
