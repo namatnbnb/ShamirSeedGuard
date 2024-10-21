@@ -27,9 +27,11 @@ def split_seed():
     logging.debug(f"Shares: {shares}, Threshold: {threshold}, Seed Type: {seed_type}")
 
     if not is_valid_seed(seed, seed_type):
+        logging.warning(f"Invalid seed format for type: {seed_type}")
         return jsonify({'error': 'Invalid seed format'}), 400
 
     if shares < threshold or threshold < 2:
+        logging.warning(f"Invalid shares ({shares}) or threshold ({threshold})")
         return jsonify({'error': 'Invalid shares or threshold'}), 400
 
     try:
@@ -38,22 +40,28 @@ def split_seed():
         logging.debug(f"Hex seed (first 10 chars): {hex_seed[:10]}...")
 
         # Use SecretSharer to split the secret
+        logging.debug("Attempting to split secret using SecretSharer")
         split_shares = SecretSharer.split_secret(hex_seed, threshold, shares)
-        logging.debug("Successfully split using SecretSharer")
+        logging.debug(f"Successfully split using SecretSharer. Number of shares: {len(split_shares)}")
 
         # Encrypt and store shares in the database
         session = Session()
         stored_shares = []
-        for share in split_shares:
+        logging.debug("Starting to encrypt and store shares")
+        for index, share in enumerate(split_shares):
             share_id = str(uuid.uuid4())
             encrypted_share = encrypt_share(share)
             new_share = EncryptedShare(share_id=share_id, encrypted_share=encrypted_share)
             session.add(new_share)
+            qr_code = generate_qr_code(share_id)
             stored_shares.append({
                 'id': share_id,
-                'qr_code': generate_qr_code(share_id)
+                'qr_code': qr_code
             })
+            logging.debug(f"Processed share {index + 1}: ID={share_id[:8]}...")
+
         session.commit()
+        logging.debug(f"Successfully stored {len(stored_shares)} shares in the database")
 
         return jsonify({'shares': stored_shares})
     except Exception as e:

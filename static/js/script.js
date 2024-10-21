@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const threshold = document.getElementById('threshold').value;
         const seedType = document.getElementById('seedType').value;
 
+        console.log('Submitting split form with:', { seed: seed.substring(0, 10) + '...', shares, threshold, seedType });
+
         fetch('/split', {
             method: 'POST',
             headers: {
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Received response:', data);
             if (data.error) {
                 splitResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
             } else if (data.shares && Array.isArray(data.shares)) {
@@ -48,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
+            console.error('Error:', error);
             splitResult.innerHTML = `<div class="alert alert-danger">An error occurred: ${error}</div>`;
         });
     });
@@ -58,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .map(input => input.value.trim())
             .filter(value => value !== '');
         const seedType = document.getElementById('reconstructSeedType').value;
+
+        console.log('Submitting reconstruct form with:', { shareIds, seedType });
 
         if (shareIds.length < 2) {
             reconstructResult.innerHTML = `<div class="alert alert-danger">At least 2 shares are required</div>`;
@@ -73,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Received response:', data);
             if (data.error) {
                 reconstructResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
             } else if (data.seed) {
@@ -82,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
+            console.error('Error:', error);
             reconstructResult.innerHTML = `<div class="alert alert-danger">An error occurred: ${error}</div>`;
         });
     });
