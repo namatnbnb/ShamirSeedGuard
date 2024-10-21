@@ -5,6 +5,8 @@ from flask import Flask, render_template, request, jsonify
 from secretsharing import SecretSharer
 from models import Session, EncryptedShare, encrypt_share, decrypt_share
 import uuid
+import qrcode
+from io import BytesIO
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY") or "a secret key"
@@ -47,10 +49,13 @@ def split_seed():
             encrypted_share = encrypt_share(share)
             new_share = EncryptedShare(share_id=share_id, encrypted_share=encrypted_share)
             session.add(new_share)
-            stored_shares.append(share_id)
+            stored_shares.append({
+                'id': share_id,
+                'qr_code': generate_qr_code(share_id)
+            })
         session.commit()
 
-        return jsonify({'share_ids': stored_shares})
+        return jsonify({'shares': stored_shares})
     except Exception as e:
         logging.error(f"Error in split_seed: {str(e)}")
         return jsonify({'error': f"An error occurred while splitting the seed: {str(e)}"}), 500
@@ -112,6 +117,16 @@ def is_valid_seed(seed, seed_type):
         return all(c in '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz' for c in seed)
     else:
         return False
+
+def generate_qr_code(data):
+    qr = qrcode.QRCode(version=1, box_size=10, border=5)
+    qr.add_data(data)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+    
+    buffered = BytesIO()
+    img.save(buffered, format="PNG")
+    return base64.b64encode(buffered.getvalue()).decode()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

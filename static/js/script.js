@@ -30,11 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.error) {
                 splitResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
             } else {
-                let sharesHtml = '<h3>Generated Share IDs:</h3><ul>';
-                data.share_ids.forEach((shareId, index) => {
-                    sharesHtml += `<li>Share ID ${index + 1}: ${shareId}</li>`;
+                let sharesHtml = '<h3>Generated Shares:</h3>';
+                data.shares.forEach((share, index) => {
+                    sharesHtml += `
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Share ID ${index + 1}</h5>
+                                <p class="card-text">${share.id}</p>
+                                <img src="data:image/png;base64,${share.qr_code}" alt="QR Code for Share ID ${index + 1}" class="img-fluid">
+                            </div>
+                        </div>
+                    `;
                 });
-                sharesHtml += '</ul>';
                 splitResult.innerHTML = `<div class="alert alert-success">${sharesHtml}</div>`;
             }
         })
