@@ -17,6 +17,10 @@ logging.basicConfig(level=logging.DEBUG)
 def index():
     return render_template('index.html')
 
+@app.route('/app')
+def app_page():
+    return render_template('app.html')
+
 @app.route('/split', methods=['POST'])
 def split_seed():
     seed = request.form['seed']

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Seed Splitter and Reconstructor</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Cryptocurrency Seed Splitter and Reconstructor</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Split Seed</h2>
+                <form id="splitForm">
+                    <div class="mb-3">
+                        <label for="seed" class="form-label">Seed Phrase</label>
+                        <textarea class="form-control" id="seed" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="seedType" class="form-label">Seed Type</label>
+                        <select class="form-select" id="seedType" required>
+                            <option value="BIP39">BIP39 Mnemonic</option>
+                            <option value="Electrum">Electrum Seed</option>
+                            <option value="Hex">Hexadecimal</option>
+                            <option value="Base58">Base58</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shares" class="form-label">Total Shares</label>
+                        <input type="number" class="form-control" id="shares" min="2" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="threshold" class="form-label">Threshold</label>
+                        <input type="number" class="form-control" id="threshold" min="2" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="timeLock" class="form-label">Time Lock (days, optional)</label>
+                        <input type="number" class="form-control" id="timeLock" min="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Split Seed</button>
+                </form>
+                <div id="splitResult" class="mt-3"></div>
+            </div>
+            
+            <div class="col-md-6">
+                <h2>Reconstruct Seed</h2>
+                <form id="reconstructForm">
+                    <div id="shareInputs">
+                        <div class="mb-3">
+                            <label for="share1" class="form-label">Share 1</label>
+                            <input type="text" class="form-control share-input" id="share1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="share2" class="form-label">Share 2</label>
+                            <input type="text" class="form-control share-input" id="share2" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reconstructSeedType" class="form-label">Seed Type</label>
+                        <select class="form-select" id="reconstructSeedType" required>
+                            <option value="BIP39">BIP39 Mnemonic</option>
+                            <option value="Electrum">Electrum Seed</option>
+                            <option value="Hex">Hexadecimal</option>
+                            <option value="Base58">Base58</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-secondary mb-3" id="addShareBtn">Add Share</button>
+                    <button type="submit" class="btn btn-primary">Reconstruct Seed</button>
+                </form>
+                <div id="reconstructResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
