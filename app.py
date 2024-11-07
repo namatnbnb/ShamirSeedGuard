@@ -2,7 +2,7 @@ import os
 import base64
 import logging
 from flask import Flask, render_template, request, jsonify
-from secretsharing import SecretSharer
+from secretsharing_fixed import SecretSharer  # Updated import
 from models import Session, EncryptedShare, encrypt_share, decrypt_share
 import uuid
 import qrcode, qrcode.image.pil
@@ -56,7 +56,7 @@ def split_seed():
         logging.debug("Starting to encrypt and store shares")
         for index, share in enumerate(split_shares):
             share_id = str(uuid.uuid4())
-            encrypted_share = encrypt_share(share)
+            encrypted_share = encrypt_share(str(share))
             time_lock_date = None
             if time_lock:
                 time_lock_date = datetime.now() + timedelta(days=int(time_lock))
@@ -104,7 +104,7 @@ def reconstruct_seed():
                 if encrypted_share.time_lock and encrypted_share.time_lock > current_time:
                     return jsonify({'error': f'Share {share_id} is time-locked until {encrypted_share.time_lock.isoformat()}'}), 403
                 decrypted_share = decrypt_share(encrypted_share.encrypted_share)
-                shares.append(decrypted_share)
+                shares.append(int(decrypted_share))
         
         if len(shares) < 2:
             return jsonify({'error': 'Not enough valid shares provided'}), 400

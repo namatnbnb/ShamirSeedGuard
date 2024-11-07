@@ -1,0 +1,310 @@
+
+[     UTC     ] Logs for shamirseedguard-fmduphvpcdxc66st8czwvz.streamlit.app/
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[08:47:22] 🖥 Provisioning machine...
+
+[08:47:22] 🎛 Preparing system...
+
+[08:47:22] ⛓ Spinning up manager process...
+
+[08:47:21] 🚀 Starting up repository: 'shamirseedguard', branch: 'main', main module: 'main.py'
+
+[08:47:21] 🐙 Cloning repository...
+
+[08:47:22] 🐙 Cloning into '/mount/src/shamirseedguard'...
+
+[08:47:22] 🐙 Cloned repository!
+
+[08:47:22] 🐙 Pulling code changes from Github...
+
+[08:47:22] 📦 Processing dependencies...
+
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+
+Using uv pip install.
+
+Resolved 17 packages in 1.67s
+
+Downloaded 17 packages in 1.00s
+
+Installed [2024-11-07 08:47:25.793676] 17 packages[2024-11-07 08:47:25.793932]  in 20ms[2024-11-07 08:47:25.794157] 
+
+ [2024-11-07 08:47:25.794834] +[2024-11-07 08:47:25.795016]  [2024-11-07 08:47:25.795180] blinker[2024-11-07 08:47:25.795344] ==1.8.2[2024-11-07 08:47:25.795494] 
+
+ [2024-11-07 08:47:25.795985] +[2024-11-07 08:47:25.796276]  cffi==1.17.1
+
+ + click==8.1.7
+
+ + cryptography==41.0.5
+
+ + flask==3.0.0
+
+ + greenlet==3.1.1
+
+ + itsdangerous==2.2.0
+
+ + jinja2==3.1.4
+
+ +[2024-11-07 08:47:25.796508]  markupsafe==3.0.2
+
+ + pillow==10.1.0
+
+ + pycparser==2.22
+
+ + pypng==0.20220715.0
+
+ + qrcode==7.4.2
+
+ + secretsharing==0.2.6
+
+ + sqlalchemy==2.0.23
+
+ + typing-extensions==4.12.2
+
+ + werkzeug==3.1.2
+
+Checking if Streamlit is installed
+
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+
+[08:47:27] 🐍 Python dependencies were installed from /mount/src/shamirseedguard/requirements.txt using uv.
+
+[08:47:27] 📦 WARN: More than one requirements file detected in the repository. Available options: uv /mount/src/shamirseedguard/requirements.txt, poetry /mount/src/shamirseedguard/pyproject.toml. Used: uv with /mount/src/shamirseedguard/requirements.txt
+
+Check if streamlit is installed
+
+
+──────────────────────────────── Installing Streamlit ──────────────────────────────────
+
+
+Using uv pip install.
+
+Resolved 41 packages in 354ms
+
+Downloaded 35 packages in 2.48s
+
+Installed 35 packages in 97ms
+
+ + altair==5.4.1
+
+ + attrs==24.2.0
+
+ + cachetools==5.5.0
+
+ + certifi==2024.8.30
+
+ + charset-normalizer==3.4.0
+
+ + gitdb==4.0.11
+
+ + gitpython==3.1.43
+
+ + idna==3.10
+
+ + jsonschema==4.23.0
+
+ + jsonschema-specifications==2024.10.1
+
+ + markdown-it-py==3.0.0
+
+ + mdurl==0.1.2
+
+ + narwhals==1.13.2
+
+ + numpy==2.1.3
+
+ + packaging==24.1
+
+ + pandas==2.2.3
+
+ + protobuf==5.28.3
+
+ + pyarrow==18.0.0
+
+ + pydeck==0.9.1
+
+ + pygments==2.18.0
+
+ + python-dateutil==2.9.0.post0
+
+ + pytz==2024.2
+
+ + referencing==0.35.1
+
+ + requests==2.32.3
+
+ + rich==13.9.4
+
+ + rpds-py==0.21.0
+
+ + six==1.16.0[2024-11-07 08:47:30.521356] 
+
+ + smmap==5.0.1
+
+ + streamlit==1.40.0
+
+ + tenacity==9.0.0
+
+ + toml==0.10.2
+
+ + tornado==6.4.1
+
+ + tzdata==2024.2
+
+ + urllib3==2.2.3
+
+ + watchdog==5.0.3
+
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+
+[08:47:31] 📦 Processed dependencies!
+
+
+
+
+────────────────────── Traceback (most recent call last) ───────────────────────
+
+  /home/adminuser/venv/lib/python3.12/site-packages/streamlit/runtime/scriptru  
+
+  nner/exec_code.py:88 in exec_func_with_error_handling                         
+
+                                                                                
+
+  /home/adminuser/venv/lib/python3.12/site-packages/streamlit/runtime/scriptru  
+
+  nner/script_runner.py:579 in code_to_exec                                     
+
+                                                                                
+
+  /mount/src/shamirseedguard/main.py:1 in <module>                              
+
+                                                                                
+
+  ❱ 1 from app import app                                                       
+
+    2                                                                           
+
+    3 if __name__ == "__main__":                                                
+
+    4 │   app.run(host="0.0.0.0", port=5000)                                    
+
+                                                                                
+
+  /mount/src/shamirseedguard/app.py:5 in <module>                               
+
+                                                                                
+
+      2 import base64                                                           
+
+      3 import logging                                                          
+
+      4 from flask import Flask, render_template, request, jsonify              
+
+  ❱   5 from secretsharing import SecretSharer                                  
+
+      6 from models import Session, EncryptedShare, encrypt_share, decrypt_sha  
+
+      7 import uuid                                                             
+
+      8 import qrcode, qrcode.image.pil                                         
+
+                                                                                
+
+  /home/adminuser/venv/lib/python3.12/site-packages/secretsharing/__init__.py:  
+
+  12 in <module>                                                                
+
+                                                                                
+
+     9                                                                          
+
+    10 __version__ = '0.2.6'                                                    
+
+    11                                                                          
+
+  ❱ 12 from .sharing import *                                                   
+
+    13 from .charset import *                                                   
+
+    14                                                                          
+
+                                                                                
+
+  /home/adminuser/venv/lib/python3.12/site-packages/secretsharing/sharing.py:1  
+
+  4 in <module>                                                                 
+
+                                                                                
+
+     11                                                                         
+
+     12 from .charset import charset_to_int, int_to_charset, base58_chars, \    
+
+     13 │   base32_chars, zbase32_chars                                         
+
+  ❱  14 from .primes import get_large_enough_prime                              
+
+     15 from .polynomials import random_polynomial, \                           
+
+     16 │   get_polynomial_points, modular_lagrange_interpolation               
+
+     17                                                                         
+
+                                                                                
+
+  /home/adminuser/venv/lib/python3.12/site-packages/secretsharing/primes.py:35  
+
+  in <module>                                                                   
+
+                                                                                
+
+    32 SMALLEST_257BIT_PRIME = (2**256 + 297)                                   
+
+    33 SMALLEST_321BIT_PRIME = (2**320 + 27)                                    
+
+    34 SMALLEST_385BIT_PRIME = (2**384 + 231)                                   
+
+  ❱ 35 STANDARD_PRIMES = calculate_mersenne_primes() + [                        
+
+    36 │   SMALLEST_257BIT_PRIME, SMALLEST_321BIT_PRIME, SMALLEST_385BIT_PRIME  
+
+    37 ]                                                                        
+
+    38 STANDARD_PRIMES.sort()                                                   
+
+                                                                                
+
+  /home/adminuser/venv/lib/python3.12/site-packages/secretsharing/primes.py:25  
+
+  in calculate_mersenne_primes                                                  
+
+                                                                                
+
+    22 │   ]                                                                    
+
+    23 │   primes = []                                                          
+
+    24 │   for exp in mersenne_prime_exponents:                                 
+
+  ❱ 25 │   │   prime = long(1)                                                  
+
+    26 │   │   for i in range(exp):                                             
+
+    27 │   │   │   prime *= 2                                                   
+
+    28 │   │   prime -= 1                                                       
+
+────────────────────────────────────────────────────────────────────────────────
+
+NameError: name 'long' is not defined
+
+main
+namatnbnb/shamirseedguard/main/main.py
