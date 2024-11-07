@@ -1,0 +1,408 @@
+
+[     UTC     ] Logs for shamirseedguard-smpvdtwp73tu3dky5cuoza.streamlit.app/
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[10:34:41] 🖥 Provisioning machine...
+
+[10:34:41] 🎛 Preparing system...
+
+[10:34:41] ⛓ Spinning up manager process...
+
+[10:34:39] 🚀 Starting up repository: 'shamirseedguard', branch: 'main', main module: 'main.py'
+
+[10:34:39] 🐙 Cloning repository...
+
+[10:34:39] 🐙 Cloning into '/mount/src/shamirseedguard'...
+
+[10:34:39] 🐙 Cloned repository!
+
+[10:34:39] 🐙 Pulling code changes from Github...
+
+[10:34:40] 📦 Processing dependencies...
+
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+
+Using uv pip install.
+
+Resolved 17 packages in 1.20s
+
+Downloaded 17 packages in 1.00s
+
+Installed 17 packages in 17ms
+
+ + blinker==1.8.2
+
+ + cffi==1.17.1
+
+ + click==8.1.7
+
+ + cryptography==41.0.5
+
+ + flask==3.0.0
+
+ + greenlet==3.1.1
+
+ + itsdangerous==2.2.0
+
+ + jinja2==3.1.4
+
+ + markupsafe==3.0.2
+
+ + pillow==10.1.0
+
+ + [2024-11-07 10:34:42.934376] pycparser==2.22
+
+ + pypng==0.20220715.0
+
+ + qrcode==7.4.2
+
+ + secretsharing==0.2.6
+
+ + sqlalchemy==2.0.23
+
+ [2024-11-07 10:34:42.934533] + typing-extensions==4.12.2
+
+ + werkzeug==3.1.2
+
+Checking if Streamlit is installed
+
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+
+[10:34:43] 🐍 Python dependencies were installed from /mount/src/shamirseedguard/requirements.txt using uv.
+
+[10:34:43] 📦 WARN: More than one requirements file detected in the repository. Available options: uv /mount/src/shamirseedguard/requirements.txt, poetry /mount/src/shamirseedguard/pyproject.toml. Used: uv with /mount/src/shamirseedguard/requirements.txt
+
+Check if streamlit is installed
+
+
+──────────────────────────────── Installing Streamlit ──────────────────────────────────
+
+
+Using uv pip install.
+
+Resolved 41 packages in 314ms
+
+Downloaded 35 packages in 1.70s
+
+Installed 35 packages in 111ms
+
+ [2024-11-07 10:34:45.794065] + altair==5.4.1
+
+ + attrs==24.2.0
+
+ + cachetools==5.5.0
+
+ + certifi==2024.8.30
+
+ + charset-normalizer==3.4.0
+
+ + gitdb==4.0.11
+
+ + gitpython==3.1.43
+
+ + idna==3.10
+
+ + jsonschema==4.23.0
+
+ + jsonschema-specifications==2024.10.1
+
+ + markdown-it-py==3.0.0
+
+ + mdurl==0.1.2
+
+ + narwhals==1.13.2
+
+ [2024-11-07 10:34:45.794516] + numpy==2.1.3
+
+ + packaging==24.1
+
+ + pandas==2.2.3
+
+ + protobuf==5.28.3
+
+ + pyarrow==18.0.0
+
+ + pydeck==0.9.1
+
+ + pygments==2.18.0
+
+ + python-dateutil==2.9.0.post0
+
+ + pytz==2024.2
+
+ + [2024-11-07 10:34:45.794764] referencing==0.35.1
+
+ + requests==2.32.3
+
+ + rich==13.9.4
+
+ + rpds-py==0.21.0
+
+ + six==1.16.0
+
+ + smmap==5.0.1
+
+ + streamlit==1.40.0
+
+ + tenacity==9.0.0
+
+ + toml==0.10.2[2024-11-07 10:34:45.794947] 
+
+ + tornado==6.4.1
+
+ + tzdata==2024.2
+
+ + urllib3==2.2.3
+
+ + watchdog==5.0.3
+
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+
+[10:34:46] 📦 Processed dependencies!
+
+
+
+
+ * Serving Flask app 'app'
+
+ * Debug mode: off
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/main.py', wd=1, mask=IN_OPEN, cookie=0, name='main.py'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/main.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='main.py'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+
+ * Running on all addresses (0.0.0.0)
+
+ * Running on http://127.0.0.1:5000
+
+ * Running on http://10.12.73.158:5000
+
+INFO:werkzeug:Press CTRL+C to quit
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.devcontainer', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='.devcontainer'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.devcontainer', wd=2, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.devcontainer', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='.devcontainer'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.devcontainer', wd=2, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='.git'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='.git'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/branches', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name='branches'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/branches', wd=9, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/branches', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='branches'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/branches', wd=9, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/hooks', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name='hooks'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/hooks', wd=10, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/hooks', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='hooks'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/hooks', wd=10, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/info', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name='info'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/info', wd=13, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/info', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='info'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/info', wd=13, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name='logs'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs', wd=11, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='logs'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs', wd=11, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs', wd=11, mask=IN_ISDIR|IN_OPEN, cookie=0, name='refs'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs', wd=15, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs', wd=11, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='refs'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs', wd=15, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/heads', wd=15, mask=IN_ISDIR|IN_OPEN, cookie=0, name='heads'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/heads', wd=17, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/heads', wd=15, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='heads'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/heads', wd=17, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes', wd=15, mask=IN_ISDIR|IN_OPEN, cookie=0, name='remotes'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes', wd=16, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes', wd=15, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='remotes'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes', wd=16, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes/origin', wd=16, mask=IN_ISDIR|IN_OPEN, cookie=0, name='origin'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes/origin', wd=18, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes/origin', wd=16, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='origin'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/logs/refs/remotes/origin', wd=18, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name='objects'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects', wd=14, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='objects'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects', wd=14, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/info', wd=14, mask=IN_ISDIR|IN_OPEN, cookie=0, name='info'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/info', wd=23, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/info', wd=14, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='info'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/info', wd=23, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/pack', wd=14, mask=IN_ISDIR|IN_OPEN, cookie=0, name='pack'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/pack', wd=24, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/pack', wd=14, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='pack'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/objects/pack', wd=24, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs', wd=5, mask=IN_ISDIR|IN_OPEN, cookie=0, name='refs'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs', wd=12, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs', wd=5, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='refs'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs', wd=12, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/heads', wd=12, mask=IN_ISDIR|IN_OPEN, cookie=0, name='heads'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/heads', wd=21, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/heads', wd=12, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='heads'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/heads', wd=21, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes', wd=12, mask=IN_ISDIR|IN_OPEN, cookie=0, name='remotes'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes', wd=19, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes', wd=12, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='remotes'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes', wd=19, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes/origin', wd=19, mask=IN_ISDIR|IN_OPEN, cookie=0, name='origin'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes/origin', wd=22, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes/origin', wd=19, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='origin'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/remotes/origin', wd=22, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/tags', wd=12, mask=IN_ISDIR|IN_OPEN, cookie=0, name='tags'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/tags', wd=20, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/tags', wd=12, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='tags'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.git/refs/tags', wd=20, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.streamlit', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='.streamlit'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.streamlit', wd=7, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.streamlit', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='.streamlit'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/.streamlit', wd=7, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/__pycache__', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='__pycache__'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/__pycache__', wd=26, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/__pycache__', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='__pycache__'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/__pycache__', wd=26, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/migrations', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='migrations'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/migrations', wd=6, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/migrations', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='migrations'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/migrations', wd=6, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='secretsharing_fixed'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed', wd=4, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='secretsharing_fixed'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed', wd=4, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed/__pycache__', wd=4, mask=IN_ISDIR|IN_OPEN, cookie=0, name='__pycache__'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed/__pycache__', wd=27, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed/__pycache__', wd=4, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='__pycache__'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/secretsharing_fixed/__pycache__', wd=27, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='static'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static', wd=8, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='static'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static', wd=8, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static/js', wd=8, mask=IN_ISDIR|IN_OPEN, cookie=0, name='js'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static/js', wd=25, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static/js', wd=8, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='js'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/static/js', wd=25, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/templates', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name='templates'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/templates', wd=3, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/templates', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name='templates'>
+
+DEBUG:watchdog.observers.inotify_buffer:in-event <InotifyEvent: src_path=b'/mount/src/shamirseedguard/templates', wd=3, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+
+main
+namatnbnb/shamirseedguard/main/main.py
